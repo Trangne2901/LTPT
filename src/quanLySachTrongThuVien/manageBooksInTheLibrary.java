@@ -90,13 +90,14 @@ public class manageBooksInTheLibrary {
         }
     }
 
-    public static List<manageBooksInTheLibrary> searchBookByName(String name){
+    public static List<manageBooksInTheLibrary> searchBookByName(String key){
         List<manageBooksInTheLibrary> Books = new ArrayList<>();
-        String sql = "SELECT * FROM book WHERE title LIKE ?";
+        String sql = "SELECT * FROM book WHERE title LIKE ? OR author LIKE ?";
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = connectJDBC().prepareStatement(sql);
-            preparedStatement.setString(1,"%" + name +"%");
+            preparedStatement.setString(1,"%" + key +"%");
+            preparedStatement.setString(2, "%" + key +"%");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -119,7 +120,7 @@ public class manageBooksInTheLibrary {
 //        updateBook();
         List<manageBooksInTheLibrary> Books = searchBookByName("hoa");
         for (manageBooksInTheLibrary book : Books) {
-            System.out.println(Books);
+            System.out.println(book);
         }
 //        showBook();
     }
