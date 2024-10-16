@@ -11,7 +11,7 @@ public class managementCustomer {
     private static final String pass = "1234";
 
     public static Connection connectionJDBC() throws SQLException {
-        java.sql.Connection conn = DriverManager.getConnection(URL, user, pass);
+        Connection conn = DriverManager.getConnection(URL, user, pass);
         System.out.println("ket noi thanh cong");
         return conn;
     }
