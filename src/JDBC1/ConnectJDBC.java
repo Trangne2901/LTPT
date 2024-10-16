@@ -1,7 +1,9 @@
+package JDBC1;
+
 import java.sql.*;
 
 public class ConnectJDBC {
-    static final String URLConnection = "jdbc:mysql://localhost:3306/bookstore";
+    static final String URLConnection = "jdbc:mysql://127.0.0.1:3306/bookstore";
     private static String username = "root";
     private static String password = "1234";
 //    URLConnection: URL để kết nối với cơ sở dữ liệu MySQL đang chạy trên localhost (máy cục bộ) và sử dụng database có tên là bookstore.
@@ -93,7 +95,7 @@ public class ConnectJDBC {
     }
 
     public static void main(String[] args) throws SQLException {
-//        ConnectJDBC demoJDBC = new ConnectJDBC();
+//        JDBC1.ConnectJDBC demoJDBC = new JDBC1.ConnectJDBC();
 //        demoJDBC.showData(); // Lấy và hiển thị dữ liệu
 //        demoJDBC.deleteData(); // Xoa
 //        // Thêm dữ liệu mới

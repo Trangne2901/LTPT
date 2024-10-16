@@ -1,6 +1,9 @@
+package JDBC1;
+
+import JDBC1.ConnectJDBC;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class test_JDBC {
 

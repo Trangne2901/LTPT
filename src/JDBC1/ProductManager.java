@@ -1,13 +1,16 @@
+package JDBC1;
+
 import javax.xml.transform.Result;
 import java.sql.*;
 
 public class ProductManager {
     public static void main(String[] args) throws SQLException {
-//        ProductManager manager = new ProductManager();
+//        JDBC1.ProductManager manager = new JDBC1.ProductManager();
 //        manager.showDataProduct();
 //        showDataProduct();
-        updateProduct();
-        showProductById(3);
+        addProduct();
+//        updateProduct();
+//        showProductById(3);
 //        deleteProductByID();
     }
     private static final String URL = "jdbc:mysql://localhost:3306/product_manager_database";
@@ -43,6 +46,32 @@ public class ProductManager {
         }
         
     }
+    // them 1 ban ghi
+    public static  void addProduct (){
+        String query = "INSERT INTO product (Name, Price, Detail, Manufacturer, Number, Status)" + "VALUES(?,?,?,?,?,?)" ;
+
+        PreparedStatement pstm = null;
+        try {
+            pstm = connectionDatabase().prepareStatement(query);
+
+            pstm.setString(1, "San pham 3");
+            pstm.setString(2, "123");
+            pstm.setString(3, "Chi tiet san pham 3");
+            pstm.setString(4, "Hang SamSung");
+            pstm.setString(5, "30");
+            pstm.setString(6, "Con hang");
+
+            int row = pstm.executeUpdate();
+            if(row != 0){
+                System.out.println("Thêm thành công " + row);
+            }
+
+            connectionDatabase().close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     // Phương thức để truy vấn bản ghi theo ID
     public static void showProductById(int id) {
         String query = "SELECT * FROM product WHERE id = ?";
